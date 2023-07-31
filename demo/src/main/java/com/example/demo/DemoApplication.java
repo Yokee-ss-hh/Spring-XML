@@ -141,9 +141,9 @@ public class DemoApplication {
 		
 		// Autowired Annotation: 
 		// Can be used to inject dependency on reference types in 3 ways
-		// 1) Autowired annotated on reference field 
-		// 2) On setter method
-		// 3) On constructor 
+		// 1) Autowired annotated on reference field -> equivalent to using autowire="byType" in bean in xml file
+		// 2) On setter method -> equivalent to using autowire="byType" in bean in xml file
+		// 3) On constructor -> equivalent to using autowire="constructor" in bean in xml file 
 		// We are using "AutoWiredMain" class and inject it's dependency objects of "AutoWired1", "AutoWired2", "AutoWired3" objects
 		
 		ApplicationContext c14 = new ClassPathXmlApplicationContext("com/example/demo/AutoWired.xml");
