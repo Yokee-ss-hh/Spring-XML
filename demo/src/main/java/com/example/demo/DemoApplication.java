@@ -158,7 +158,7 @@ public class DemoApplication {
 		// to provide the required bean name. 
 		// If we don't use Qualifier annotation we will get below message
 		// No qualifying bean of type 'com.example.demo.Qualifier1' available: expected single matching bean but found 2: quali1,quali2
-		// To remove above exception, use @Qualifier() Annotation
+		// To remove above exception, use @Qualifier("bean name") Annotation
 		
 		ApplicationContext c15 = new ClassPathXmlApplicationContext("com/example/demo/QualifierMain.xml");
 		QualifierMain qm = (QualifierMain) c15.getBean("qualimain");
