@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <bean name="commentBean1" class="com.example.demo.Comment">
+          <constructor-arg name="commentId" type="int">
+              <value>1</value>
+          </constructor-arg>
+          <constructor-arg name="commentName">
+              <value>comment1</value>
+          </constructor-arg>
+    </bean>
+    
+    <bean name="commentBean2" class="com.example.demo.Comment">
+          <constructor-arg name="commentId" type="int" value="2"/>
+          <constructor-arg name="commentName" type="String" value="comment2"/>
+    </bean>
+    
+    <bean name="commentBean3" class="com.example.demo.Comment" c:commentId="3" c:commentName="comment3"/>
+    
+    <bean name="postBean1" class="com.example.demo.Post">
+          <constructor-arg name="postId" type="int">
+                       <value>1</value>
+          </constructor-arg>
+          <constructor-arg name="postName" type="String">
+                       <value>post1</value>
+          </constructor-arg>
+          <constructor-arg name="postComment" type="Comment">
+                       <ref bean="commentBean1"/>
+          </constructor-arg>
+    </bean>
+    
+    <bean name="postBean2" class="com.example.demo.Post">
+          <constructor-arg name="postId" type="int" value="2" />
+          <constructor-arg name="postName" type="String" value="post2" />
+          <constructor-arg name="postComment" type="Comment" ref="commentBean2" />
+    </bean>
+    
+    <bean name="postBean3" class="com.example.demo.Post" c:postId="3" c:postName="post3" c:postComment-ref="commentBean3"/>
+</beans>

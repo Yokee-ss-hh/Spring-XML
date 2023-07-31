@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <bean name="person1" class="com.example.demo.Person">
+         <property name="name" value="Yokesh"></property>
+         <property name="hobbies">
+               <list>
+                    <value>Coding</value>
+                    <value>Travelling</value>
+                    <value>Gaming</value>
+               </list>
+         </property>
+         <property name="favoritePlaces">
+               <set>
+                   <value>Tirupathi</value>
+                   <value>Bangalore</value>
+               </set>
+         </property>
+         <property name="friends">
+               <map>
+                   <entry key="yokesh1" value="male" />
+                   <entry key="yokesh2" value="female" />
+               </map>
+         </property>
+         <property name="props">
+                <map>
+                    <entry key="property1" value="A"/>
+                    <entry key="property2" value="B"/>
+                </map>
+         </property>
+    </bean>
+</beans>
