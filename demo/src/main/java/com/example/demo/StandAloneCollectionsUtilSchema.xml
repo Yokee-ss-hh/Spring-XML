@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
+        
+    <!-- Stand alone collections  -->
+    <util:list list-class="java.util.LinkedList" id="prices">
+        <value>100</value>
+        <value>200</value>
+        <value>300</value>
+    </util:list>
+    
+    <util:set set-class="java.util.TreeSet" id="places">
+        <value>Bangalore</value>
+        <value>Tirupathi</value>
+        <value>Chittoor</value>
+        <value>Nellore</value>
+    </util:set>
+    
+    <util:map map-class="java.util.TreeMap" id="primes">
+       <entry key="Two">
+          <value>2</value>
+       </entry>
+       <entry key="Five">
+          <value>5</value>
+       </entry>
+       <entry key="Seventeen" value="17" />
+    </util:map>
+    
+    <!-- No need to mention class for properties -->
+    <util:properties id="properties">
+        <prop key="Data Science">Python</prop>
+        <prop key="Development">Java</prop>
+    </util:properties>
+    
+    
+    <!-- Bean 1 -->
+    
+    <bean class="com.example.demo.StandAloneCollectionsUtilSchema" name="s1">
+          <property name="burgerPrices" ref="prices" />
+          <property name="favoritePlaces" ref="places"></property>
+          <property name="favoritePrimes" ref="primes"></property>
+          <property name="props" ref="properties"></property>
+    </bean>
+    
+    <!-- Bean 2 -->
+    
+    <bean class="com.example.demo.StandAloneCollectionsUtilSchema" name="s2">
+          <property name="burgerPrices" ref="prices" />
+          <property name="favoritePlaces" ref="places"></property>
+          <property name="favoritePrimes" ref="primes"></property>
+          <property name="props" ref="properties"></property>
+    </bean>
+    
+    <!-- Similarly we can create many beans as possible and use above 3 stand alone collections using util schema -->        
+</beans>

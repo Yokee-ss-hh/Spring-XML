@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -164,5 +165,38 @@ public class DemoApplication {
 		QualifierMain qm = (QualifierMain) c15.getBean("qualimain");
 		System.out.println(qm.getQ1());
 		System.out.println(qm.toString());
+		
+		// Spring stand alone collections using Util Schema:
+		// If we use list,set and map tags inside property/ constructor-arg tags to inject data we need to re-write 
+		// list/set/map tags with data everytime we create multiple beans. 
+		// That means if we have multiple beans and we want to set common list data, Then we need to use list tag in all of
+		// the multiple beans, This is code duplication. We can set list at single time and re-use that by calling 
+		// inside multiple beans using ref tag and create stand alone collections using util schema
+		// We can use util schema to set list/set/map at single time and can these using "ref" attribute in multiple 
+		// beans
+		// By default, list tag uses ArrayList, set uses HashSet and map uses HashMap. But using util schema 
+		// we can specify which class we want to use.
+		
+		ApplicationContext c16 = new ClassPathXmlApplicationContext("com/example/demo/StandAloneCollectionsUtilSchema.xml");
+		StandAloneCollectionsUtilSchema sacus1 = (StandAloneCollectionsUtilSchema) c16.getBean("s1");
+		StandAloneCollectionsUtilSchema sacus2 = (StandAloneCollectionsUtilSchema) c16.getBean("s2");
+		
+		System.out.println(sacus1.getBurgerPrices());
+		System.out.println(sacus1.getFavoritePlaces());
+		System.out.println(sacus1.getFavoritePrimes());
+		System.out.println(sacus1.getProps());
+		System.out.println(sacus1.getBurgerPrices().getClass().getName());
+		System.out.println(sacus1.getFavoritePlaces().getClass().getName());
+		System.out.println(sacus1.getFavoritePrimes().getClass().getName());
+		System.out.println(sacus1.getProps().getClass().getName());
+		
+		System.out.println(sacus2.getBurgerPrices());
+		System.out.println(sacus2.getFavoritePlaces());
+		System.out.println(sacus2.getFavoritePrimes());
+		System.out.println(sacus2.getProps());
+		System.out.println(sacus2.getBurgerPrices().getClass().getName());
+		System.out.println(sacus2.getFavoritePlaces().getClass().getName());
+		System.out.println(sacus2.getFavoritePrimes().getClass().getName());
+		System.out.println(sacus2.getProps().getClass().getName());
 	}
 }
