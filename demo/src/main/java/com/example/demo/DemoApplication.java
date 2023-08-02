@@ -207,6 +207,12 @@ public class DemoApplication {
 		// ApplicationContext. We will get 2 objects because, 1 object will be created by main class as main class
 		// is annotated with @ComponentScan internally. Another object will be created by XML file as we 
 		// mentioned <context:component-scan/> in it. So 2 objects of same class is disallowed here. 
+		// We cannot create a object of a class that is annotated with @Component using ApplicationContext
+		// in main class DemoApplication.java because ApplicationContext uses xml file which has <context:component-scan/> in it 
+		// and DemoApplication.java class has @SpringBootApplication annotated which internally uses @ComponentScan
+		// So 2 times scanning will happen.
+		// This creates 2 times scanning of java class annotated with @Component which creates 2 objects which
+		// is not allowed
 		// So, We need to run our application as a java application without single entry point annotated with
 		// @SpringBootApplication. Hence @Component, @Value feature demo with package scanning via XML file
 		// is covered in another project. 
