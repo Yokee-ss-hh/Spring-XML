@@ -198,5 +198,17 @@ public class DemoApplication {
 		System.out.println(sacus2.getFavoritePlaces().getClass().getName());
 		System.out.println(sacus2.getFavoritePrimes().getClass().getName());
 		System.out.println(sacus2.getProps().getClass().getName());
+		
+		// Here in this project we have only 1 entry point to the spring boot application with name as
+		// DemoApplication which is annotated by @SpringBootApplication which internally annotated by
+		// @Configuration, @ComponentScan ....etc 
+		// If i create a xml file to specify spring to scan a package using <context:component-scan/> 
+		// and that class has a @Component annotation, and use that class to create object in main class using
+		// ApplicationContext. We will get 2 objects because, 1 object will be created by main class as main class
+		// is annotated with @ComponentScan internally. Another object will be created by XML file as we 
+		// mentioned <context:component-scan/> in it. So 2 objects of same class is disallowed here. 
+		// So, We need to run our application as a java application without single entry point annotated with
+		// @SpringBootApplication. Hence @Component, @Value feature demo with package scanning via XML file
+		// is covered in another project. 
 	}
 }
